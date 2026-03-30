@@ -13,10 +13,10 @@ export const Main = ({ currentUser, isCurrentUserAuthorized }: { currentUser?: U
     return (
         <main className="main">
             <Routes>
-                <Route path="/" element={<MainPage isCurrentUserAuthorized={isCurrentUserAuthorized} currentUser={currentUser} />} />
+                <Route path="/" element={<MainPage isCurrentUserAuthorized={isCurrentUserAuthorized} />} />
                 <Route path="/genres" element={<GenresPage />} />
                 <Route path="/genres/:genreId" element={<GenreFilmsPage />} />
-                <Route path="/movies/:movieId" element={<FilmPage isCurrentUserAuthorized={isCurrentUserAuthorized} currentUser={currentUser} />} />
+                <Route path="/movies/:movieId" element={<FilmPage isCurrentUserAuthorized={isCurrentUserAuthorized} />} />
                 <Route path="*" element={<NotFoundPage />} />
                 {currentUser && (
                     <Route path="/currentUserAccount" element={<AccountPage currentUser={currentUser} />} />

@@ -12,12 +12,12 @@ export function GenreFilmsPage() {
     const { genreId } = useParams();
 
     const { data: genreFilmsList } = useQuery({
-        queryFn: () => Api.getFilteredMovies(50, 1, "", genreId),
+        queryFn: () => Api.getFilteredMovies(50, 1, "", String(genreId)),
         queryKey: ["genreFilmsList"],
     }, queryClient);
 
-    const [visibleGenreMoviesList, setVisibleGenreMoviesList] = useState<Movie[] | undefined>(genreFilmsList?.slice(0, 10));
-    const [doesHaveMoreMovies, setDoesHaveMoreMovies] = useState<boolean>(true);
+    const [visibleGenreMoviesList, setVisibleGenreMoviesList] = useState<Movie[]>(genreFilmsList?.slice(0, 10) || []);
+    const [doesHaveMoreMovies] = useState<boolean>(true);
 
     const handleOnClickMoreBtn = () => {
         if(!doesHaveMoreMovies) return;
@@ -25,7 +25,7 @@ export function GenreFilmsPage() {
         const nextVisibleMoviesList = genreFilmsList?.slice(
             visibleGenreMoviesList?.length,
             Number(visibleGenreMoviesList?.length) + 10
-        );
+        ) || [];
 
         setVisibleGenreMoviesList([...visibleGenreMoviesList, ...nextVisibleMoviesList]);
     };

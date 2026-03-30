@@ -3,7 +3,6 @@ import { User } from "../../api/AuthApi";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "../../queryClient";
 import { Link } from "react-router-dom";
-import { Movie } from "../../api/MoviesApi";
 import Api from "../../api/api";
 import mail from "../../assets/AccountPage/mail.svg";
 import person from "../../assets/AccountPage/person.svg";
@@ -18,7 +17,6 @@ export function AccountPage({currentUser}: {currentUser: User}) {
     }, queryClient);
 
     const [currentTab, setCurrentTab] = useState<"favorites" | "settings">("favorites");
-    const [favouriteMoviesList, setFavouriteMoviesList] = useState<Movie[] | undefined>(favouriteMovies || undefined);
 
     const removeMovieFromFavoritesMutation = useMutation({
         mutationFn: (movieId: number) => Api.removeMovieFromFavorites(movieId),

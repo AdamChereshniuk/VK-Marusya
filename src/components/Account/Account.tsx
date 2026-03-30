@@ -21,10 +21,6 @@ export const Account = () => {
         },
         queryClient
     );
-    const { data: favoriteMovies } = useQuery({
-        queryFn: () => Api.getFavoriteMovies(),
-        queryKey: ["favoriteMovies"],
-    }, queryClient);
 
     const dispatch = useDispatch();
     const handleOnClickHeaderBtn: MouseEventHandler = () => {

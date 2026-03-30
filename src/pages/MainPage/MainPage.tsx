@@ -5,7 +5,6 @@ import { MouseEventHandler, useState } from "react";
 import { showLoginPopup } from "../../redux/Slices/doesShowLoginPopupSlice";
 import { useDispatch } from "react-redux";
 import { TrailerPopup } from "../../components/TrailerPopup/TrailerPopup";
-import { User } from "../../api/AuthApi";
 import full_heart from "../../assets/AccountPage/full_heart.svg";
 import raiting_star from "../../assets/MainPage/raiting-star.png";
 import update_movie from "../../assets/MainPage/update-movie.svg";
@@ -13,7 +12,7 @@ import heart from "../../assets/MainPage/favourite.png";
 import Api from "../../api/api";
 import "./MainPage.css";
 
-export function MainPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUserAuthorized: boolean, currentUser?: User }) {
+export function MainPage({ isCurrentUserAuthorized }: { isCurrentUserAuthorized: boolean }) {
     const { data: randomMovie, refetch } = useQuery({
         queryFn: () => Api.getRandomMovie(),
         queryKey: ["randomMovie"],
@@ -31,22 +30,22 @@ export function MainPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUs
     const [favouriteBtnImg, setFavouriteBtnImg] = useState(heart);
 
     let starColor: string = "";
-    if(randomMovie?.tmdbRating > 8) {
+    if(Number(randomMovie?.tmdbRating) > 8) {
         starColor = "#308E21";
-    } else if(randomMovie?.tmdbRating > 7) {
+    } else if(Number(randomMovie?.tmdbRating) > 7) {
         starColor = "#A59400";
     } else {
         starColor = "#777";
     }
 
     const addMovieToFavoritesMutation = useMutation({
-        mutationFn: () => Api.addMovieToFavorites(randomMovie?.id),
+        mutationFn: () => Api.addMovieToFavorites(Number(randomMovie?.id)),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["favoriteMovies"] });
         }
     }, queryClient);
     const removeMovieFromFavoritesMutation = useMutation({
-        mutationFn: () => Api.removeMovieFromFavorites(randomMovie?.id),
+        mutationFn: () => Api.removeMovieFromFavorites(Number(randomMovie?.id)),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["favoriteMovies"] });
         }
@@ -96,9 +95,9 @@ export function MainPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUs
                                         <img src={raiting_star} alt="Звезда" />
                                         <span>{randomMovie.tmdbRating}</span>
                                     </div>
-                                    <span className="hero__detail--realeaseYear">{randomMovie.releaseYear}</span>
+                                    <span className="hero__detail--realeaseYear">{randomMovie.relaseYear}</span>
                                     <span className="hero__detail--genres">
-                                        {randomMovie.genres.length === 1
+                                        {Number(randomMovie.genres.length) === 1
                                         ? randomMovie.genres[0]
                                         : randomMovie.genres.map((item: string, index: number) => {
                                             return (

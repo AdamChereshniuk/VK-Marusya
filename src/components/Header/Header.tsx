@@ -13,7 +13,6 @@ import header_logo from "../../assets/Header/logo.png";
 import rating_star from "../../assets/MainPage/raiting-star.svg";
 import genres_icon from "../../assets/Header/genres_icon.svg";
 import search_icon from "../../assets/Header/search_icon.svg";
-import person_icon from "../../assets/Header/person_icon.svg";
 import Api from "../../api/api";
 import "./Header.css";
 
@@ -106,7 +105,7 @@ export const Header = ({headerBtnNode, headerMobileBtnNode}: {headerBtnNode: Rea
                             
                             <input onFocus={handleOnFocusSearchInput} onBlur={handleOnBlurSearchInput} onChange={handleOnChangeSearchInput} className="header__search" placeholder="Поиск" type="text" value={searchValue}/>
                             <ul className={"header__movies " + headerMoviesSecondClass}>
-                                {filteredMovies && filteredMovies?.map((item) => {
+                                {filteredMovies && filteredMovies.map((item) => {
                                     let starColor: string = "";
                                     if(item.tmdbRating > 8) {
                                         starColor = "#308E21";
@@ -128,9 +127,9 @@ export const Header = ({headerBtnNode, headerMobileBtnNode}: {headerBtnNode: Rea
                                                             <img src={rating_star} alt="Звезда" />
                                                             {item.tmdbRating}
                                                         </span>
-                                                        <span className="header__detail--releaseYear">{item.releaseYear}</span>
+                                                        <span className="header__detail--releaseYear">{item.relaseYear}</span>
                                                         <span className="header__detail--genres">
-                                                            {item.genres.length === 1
+                                                            {Number(item.genres.length) === 1
                                                                 ? item.genres[0]
                                                                 : item.genres.map((genre: string, index: number) => {
                                                                     return (
@@ -170,9 +169,9 @@ export const Header = ({headerBtnNode, headerMobileBtnNode}: {headerBtnNode: Rea
                                                             <img src={rating_star} alt="Звезда" />
                                                             {item.tmdbRating}
                                                         </span>
-                                                        <span className="header__detail--releaseYear">{item.releaseYear}</span>
+                                                        <span className="header__detail--releaseYear">{item.relaseYear}</span>
                                                         <span className="header__detail--genres">
-                                                            {item.genres.length === 1
+                                                            {Number(item.genres.length) === 1
                                                                 ? item.genres[0]
                                                                 : item.genres.map((genre: string, index: number) => {
                                                                     return (

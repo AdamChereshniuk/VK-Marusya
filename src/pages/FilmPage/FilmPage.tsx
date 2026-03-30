@@ -5,18 +5,17 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "../../queryClient";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { User } from "../../api/AuthApi";
 import raiting_star from "../../assets/MainPage/raiting-star.png";
 import Api from "../../api/api";
 import heart from "../../assets/MainPage/favourite.png";
 import full_heart from "../../assets/AccountPage/full_heart.svg";
 import "./FilmPage.css";
 
-export function FilmPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUserAuthorized: boolean, currentUser?: User }) {
+export function FilmPage({ isCurrentUserAuthorized }: { isCurrentUserAuthorized: boolean }) {
     const { movieId } = useParams();
     
     const { data: movieObj } = useQuery({
-        queryFn: () => Api.getMovieById(movieId),
+        queryFn: () => Api.getMovieById(Number(movieId)),
         queryKey: ["movieObj"],
     }, queryClient);
     const { data: favoriteMovies } = useQuery({
@@ -25,13 +24,13 @@ export function FilmPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUs
     }, queryClient);
 
     const addMovieToFavoritesMutation = useMutation({
-        mutationFn: () => Api.addMovieToFavorites(movieObj?.id),
+        mutationFn: () => Api.addMovieToFavorites(Number(movieObj?.id)),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["favoriteMovies"] });
         }
     }, queryClient);
      const removeMovieFromFavoritesMutation = useMutation({
-        mutationFn: () => Api.removeMovieFromFavorites(movieObj?.id),
+        mutationFn: () => Api.removeMovieFromFavorites(Number(movieObj?.id)),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["favoriteMovies"] });
         }
@@ -70,9 +69,9 @@ export function FilmPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUs
     const favouriteBtnNode = isCurrentUserAuthorized ? <button className="hero__btn--favourite" onClick={handleOnClickFavouriteBtnTwo}><img src={favouriteBtnImg} alt="Сердце" /></button> : <button className="hero__btn--favourite" onClick={handleOnClickFavouriteBtnOne}><img src={favouriteBtnImg} alt="Сердце" /></button>;
 
     let starColor: string = "";
-    if(movieObj?.tmdbRating > 8) {
+    if(Number(movieObj?.tmdbRating) > 8) {
         starColor = "#308E21";
-    } else if(movieObj?.tmdbRating > 7) {
+    } else if(Number(movieObj?.tmdbRating) > 7) {
         starColor = "#A59400";
     } else {
         starColor = "#777";
@@ -93,9 +92,9 @@ export function FilmPage({ isCurrentUserAuthorized, currentUser }: { isCurrentUs
                                             <img src={raiting_star} alt="Звезда" />
                                             <span>{movieObj.tmdbRating}</span>
                                         </div>
-                                        <span className="movie__detail--realeaseYear">{movieObj.releaseYear}</span>
+                                        <span className="movie__detail--realeaseYear">{movieObj.relaseYear}</span>
                                         <span className="movie__detail--genres">
-                                            {movieObj.genres.length === 1
+                                            {Number(movieObj.genres.length) === 1
                                             ? movieObj.genres[0]
                                             : movieObj.genres.map((item: string, index: number) => {
                                                 return (
