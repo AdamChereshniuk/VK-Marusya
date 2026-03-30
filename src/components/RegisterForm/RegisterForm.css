@@ -1,0 +1,29 @@
+.register__input {
+    border: 1px solid #00000066;
+    border-radius: 8px;
+    padding: 16px;
+    width: 100%;
+}
+
+.register__input::placeholder {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.register__btn--submit {
+    margin: 12px 0 24px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: #67A5EB;
+    color: #fff;
+    border-radius: 28px;
+    padding: 16px 97.5px;
+    width: 400px;
+}

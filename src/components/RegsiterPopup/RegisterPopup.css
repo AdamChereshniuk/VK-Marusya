@@ -1,0 +1,66 @@
+.register-popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.register-popup__box {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    max-width: 492px;
+}
+
+.register-popup__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 40px;
+    padding: 64px 40px;
+    background-color: #fff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.register-popup__btn--close {
+    border-radius: 24px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 24px;
+}
+
+.register-popup__title {
+    width: fit-content;
+    display: block;
+    margin: 0 auto 24px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+}
+
+.register-popup__text {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+}
+
+.register-popup__btn--submit {
+    margin: 12px 0 24px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: #67A5EB;
+    color: #fff;
+    border-radius: 28px;
+    padding: 16px 97.5px;
+    width: 400px;
+}

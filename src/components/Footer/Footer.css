@@ -1,0 +1,32 @@
+/* Footer */
+.footer {
+  padding: 40px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__socials-list {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+}
+
+.footer__socials-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 24px 0;
+  }
+
+  .footer,
+  .footer__socials-list {
+    justify-content: flex-start;
+  }
+}

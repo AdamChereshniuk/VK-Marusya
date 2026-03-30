@@ -1,0 +1,244 @@
+.account-section {
+    color: #fff;
+}
+
+.account__title {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 0%;
+    margin-bottom: 64px;
+}
+
+.account__tabs {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-bottom: 64px;
+}
+
+.account__tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 64px;
+}
+
+.settings__item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.settings__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings__item-label {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+}
+
+.settings__item-text {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0%;
+}
+
+.settings__list .settings__item:first-child > p {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0%;
+}
+
+.settings__list .settings__item:first-child > p,
+.settings__list .settings__item:nth-child(2) img {
+    padding: 14px;
+    background-color: #FFFFFF80;
+    border-radius: 30px;
+}
+
+.settings__list .settings__item:nth-child(2) img {
+    padding: 18px;
+}
+
+.settings__btn {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    background-color: #67A5EB;
+    padding: 16px 48px;
+    border-radius: 28px;
+}
+
+.settings__btn a {
+    color: #fff;
+}
+
+.favorites__heading--nofilms {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 0%;
+}
+
+.favorites__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 224px);
+    gap: 64px 40px;
+}
+
+.favorites__item {
+    position: relative;
+}
+
+.favorites__item-btn--remove {
+    display: none;
+    position: absolute;
+    padding: 14px;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.favorites__item-btn--remove__img {
+    max-width: 12px;
+}
+
+.favorites__item > a > div > img {
+    border-radius: 16px;
+    width: 100%;
+    height: 336px;
+    box-shadow: 0px 0px 80px 0px #FFFFFF54;
+}
+
+.favorites__item:hover .favorites__item-btn--remove {
+    display: flex;
+}
+
+.account__tab-text--mobile {
+    display: none;
+}
+
+@media (max-width: 520px) {
+    .account__title {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 40px;
+    }
+
+    .account__tabs {
+        margin-bottom: 40px;
+    }
+
+    .favorites {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        width: calc(100% + 20px);
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-top: 12px;
+    }
+
+    .favorites__item div {
+        background-color: #3c3c3c;
+        border: 1px solid hsla(0, 0%, 100%, .25);
+        border-radius: 16px;
+        box-shadow: 0 0 80px #ffffff54;
+        height: 336px;
+        overflow: visible;
+        position: relative;
+        width: 224px;
+    }
+
+    .favorites__item-btn--remove {
+        background-color: #fff;
+        border-radius: 50px;
+        font-size: 24px;
+        font-weight: 700;
+        left: -12px;
+        line-height: 133%;
+        padding: 8px 24px;
+        position: absolute;
+        top: -12px;
+        z-index: 1;
+    }
+
+    .favorites__item div > img {
+        border-radius: inherit;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        transition: scale .3s ease-in-out;
+        width: 100%;
+    }
+
+    .favorites__list {
+        display: flex;
+        gap: 40px;
+    }
+
+    .favorites__list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .favorites__item > a > div > img {
+        width: 224px;
+        max-width: 224px;
+        height: 336px;
+        max-height: 336px;
+    }
+
+    .account__tab-text {
+        display: none;
+    }
+
+    .account__tab-text--mobile {
+        display: block;
+    }
+
+    .favorites__heading--nofilms {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .account-section {
+        padding: 16px 0 152px;
+    }
+
+    .settings__item-label {
+        font-size: 14px;
+        line-height: 20px;
+        color: #FFFFFF80;
+    }
+
+    .settings__item-text {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
