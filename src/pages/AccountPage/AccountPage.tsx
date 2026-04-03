@@ -1,22 +1,22 @@
-import { useState } from "react";
-import { User } from "../../api/AuthApi";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "../../queryClient";
+import { IUser } from "../../api/AuthApi";
 import { Link } from "react-router-dom";
-import Api from "../../api/api";
-import mail from "../../assets/AccountPage/mail.svg";
+import { useState } from "react";
 import person from "../../assets/AccountPage/person.svg";
 import heart from "../../assets/AccountPage/heart.svg";
 import cross from "../../assets/AccountPage/cross.svg";
+import mail from "../../assets/AccountPage/mail.svg";
+import Api from "../../api/api";
 import "./AccountPage.css";
 
-export function AccountPage({currentUser}: {currentUser: User}) {
-    const { data: favouriteMovies } = useQuery({
+export function AccountPage({ userData }: { userData: IUser }) {
+    const [currentTab, setCurrentTab] = useState<"favorites" | "settings">("favorites");
+
+    const { data: favoriteMovies } = useQuery({
         queryFn: () => Api.getFavoriteMovies(),
         queryKey: ["favoriteMovies"],
     }, queryClient);
-
-    const [currentTab, setCurrentTab] = useState<"favorites" | "settings">("favorites");
 
     const removeMovieFromFavoritesMutation = useMutation({
         mutationFn: (movieId: number) => Api.removeMovieFromFavorites(movieId),
@@ -32,15 +32,9 @@ export function AccountPage({currentUser}: {currentUser: User}) {
         },
     }, queryClient);
 
-    const handleOnClickFavoritesTabBtn = () => {
-        setCurrentTab("favorites");
-    };
-    const handleOnClickSettingsTabBtn = () => {
-        setCurrentTab("settings");
-    };
-    const handleOnClickSettingsLogoutBtn = () => {
-        logoutUserMutation.mutate();
-    };
+    const handleOnClickFavoritesTabBtn = () => setCurrentTab("favorites");
+    const handleOnClickSettingsTabBtn = () => setCurrentTab("settings");
+    const handleOnClickSettingsLogoutBtn = () => logoutUserMutation.mutate();
 
     return (
         <section className="account-section">
@@ -48,76 +42,64 @@ export function AccountPage({currentUser}: {currentUser: User}) {
                 <h2 className="account__title">Мой аккаунт</h2>
 
                 <ul className="account__tabs">
-                    <li className="account__tab">
+                    <li className={`account__tab ${currentTab === "favorites" && "current"}`}>
                         <button className="account__tab-btn" onClick={handleOnClickFavoritesTabBtn}>
-                            <img src={heart} alt="" />
+                            <img src={heart} alt="Избранное"/>
                             <p className="account__tab-text">Избранные фильмы</p>
-                            <p className="account__tab-text--mobile">Избранное</p>
+                            <p className="account__tab-mobile-text">Избранное</p>
                         </button>
                     </li>
-                    <li className="account__tab">
+                    <li className={`account__tab ${currentTab === "settings" && "current"}`}>
                         <button className="account__tab-btn" onClick={handleOnClickSettingsTabBtn}>
-                            <img src={person} alt="" />
+                            <img src={person} alt="Настройки"/>
                             <p className="account__tab-text">Настройки аккаунта</p>
-                            <p className="account__tab-text--mobile">Настройки</p>
+                            <p className="account__tab-mobile-text">Настройки</p>
                         </button>
                     </li>
                 </ul>
 
                 {currentTab === "favorites" ? (
                     <div className="favorites">
-                        {favouriteMovies?.length !== 0 ? (
+                        {favoriteMovies && favoriteMovies.length > 0 ? (
                             <ul className="favorites__list">
-                                {favouriteMovies?.map((item) => {
-                                    const handleOnClickFavouritesRemoveBtn = () => {
-                                        removeMovieFromFavoritesMutation.mutate(item.id);
-
-                                        // setFavouriteMoviesList((prevFavoriteMoviesList) => prevFavoriteMoviesList?.filter((favoriteMovie) => favoriteMovie.id !== item.id));
-                                    };
+                                {favoriteMovies.map((item) => {
+                                    const handleOnClickFavoritesRemoveBtn = () => removeMovieFromFavoritesMutation.mutate(item.id);
                                     
                                     return (
                                         <li className="favorites__item" key={item.id}>
-                                            <Link to={`/movies/${item.id}`}>
-                                                <div>
-                                                    <img src={item.posterUrl} alt="Нет фото" />
-                                                </div>
+                                            <Link className="favorites__poster-link" to={`/movies/${item.id}`}>
+                                                <img className="favorites__poster-img" src={item.posterUrl} alt="Нет фото"/>
                                             </Link>
 
-                                            <button className="favorites__item-btn--remove" onClick={handleOnClickFavouritesRemoveBtn}>
-                                                <img className="favorites__item-btn--remove__img" src={cross} alt="Крестик" />
+                                            <button className="favorites__remove-btn" onClick={handleOnClickFavoritesRemoveBtn}>
+                                                <img className="favorites__remove-img" src={cross} alt="Крестик"/>
                                             </button>
                                         </li>
                                     )
                                 })}
                             </ul>
-                        ) : (
-                            <h2 className="favorites__heading--nofilms">У Вас нет избранных фильмов</h2>
-                        )}
+                        ) : <h2 className="favorites__heading">У Вас нет избранных фильмов</h2>}
                     </div>
                 ) : (
                     <div className="settings">
                         <ul className="settings__list">
-                            <li className="settings__item">
-                                <p>{currentUser.name.charAt(0).toUpperCase() + currentUser.surname.charAt(0).toUpperCase()}</p>
+                            <li className="settings__item settings__name-item">
+                                <p className="settings__item-icon">{userData.name.charAt(0).toUpperCase() + userData.surname.charAt(0).toUpperCase()}</p>
                                 <div className="settings__item-content">
-                                    <span className="settings__item-label">Имя Фамилия</span>
-                                    <p className="settings__item-text">{currentUser.name.charAt(0).toUpperCase() + currentUser.name.slice(1)} {currentUser.surname.charAt(0).toUpperCase() + currentUser.surname.slice(1)}</p>
+                                    <span className="settings__item-title">Имя Фамилия</span>
+                                    <p className="settings__item-text">{userData.name.charAt(0).toUpperCase() + userData.name.slice(1)} {userData.surname.charAt(0).toUpperCase() + userData.surname.slice(1)}</p>
                                 </div>
                             </li>
-                            <li className="settings__item">
-                                <img src={mail} alt="" />
+                            <li className="settings__item settings__email-item">
+                                <img className="settings__item-icon" src={mail} alt="Почта"/>
                                 <div className="settings__item-content">
-                                    <span className="settings__item-label">Электронная почта</span>
-                                    <p className="settings__item-text">{currentUser.email}</p>
+                                    <span className="settings__item-title">Электронная почта</span>
+                                    <p className="settings__item-text">{userData.email}</p>
                                 </div>
                             </li>
                         </ul>
 
-                        <button className="settings__btn" onClick={handleOnClickSettingsLogoutBtn}>
-                            <Link to={`/`}>
-                                Выйти из аккаунта
-                            </Link>
-                        </button>
+                        <Link className="settings__link" onClick={handleOnClickSettingsLogoutBtn} to={`/`}>Выйти из аккаунта</Link>
                     </div>
                 )}
             </div>

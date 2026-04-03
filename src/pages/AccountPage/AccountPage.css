@@ -1,13 +1,13 @@
 .account-section {
+    height: 100vh;
+    padding: 64px 0 160px;
     color: #fff;
 }
 
 .account__title {
     font-weight: 700;
-    font-style: Bold;
     font-size: 48px;
     line-height: 56px;
-    letter-spacing: 0%;
     margin-bottom: 64px;
 }
 
@@ -18,12 +18,75 @@
     margin-bottom: 64px;
 }
 
+.account__tab.current {
+    border-bottom: 2px solid #DC5DFC;
+}
+
 .account__tab-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    padding: 8px 0;
 }
 
+.account__tab-text {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.account__tab-mobile-text {
+    display: none;
+}
+
+/* favorites-tab */
+.favorites__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 64px 40px;
+}
+
+.favorites__item {
+    position: relative;
+}
+
+.favorites__poster-img {
+    width: 100%;
+    height: 100%;
+    max-width: 224px;
+    max-height: 336px;
+    border-radius: 16px;
+    box-shadow: 0px 0px 80px 0px #FFFFFF54;
+}
+
+.favorites__remove-btn {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 100%;
+    background-color: #fff;
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.favorites__item:hover .favorites__remove-btn {
+    display: block;
+}
+
+.favorites__remove-img {
+    width: 24px;
+    height: 24px;
+}
+
+.favorites__heading {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 56px;
+}
+
+/* settings-tab */
 .settings__list {
     display: flex;
     flex-direction: column;
@@ -33,8 +96,8 @@
 
 .settings__item {
     display: flex;
-    gap: 16px;
     align-items: center;
+    gap: 16px;
 }
 
 .settings__item-content {
@@ -43,107 +106,63 @@
     gap: 4px;
 }
 
-.settings__item-label {
+.settings__item-title {
     font-size: 18px;
     line-height: 24px;
-    letter-spacing: 0%;
 }
 
 .settings__item-text {
     font-weight: 700;
-    font-style: Bold;
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 0%;
 }
 
-.settings__list .settings__item:first-child > p {
+.settings__item-icon {
+    background: #FFFFFF80;
+    border-radius: 100%;
+}
+
+.settings__name-item .settings__item-icon {
     font-weight: 700;
-    font-style: Bold;
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 0%;
-}
-
-.settings__list .settings__item:first-child > p,
-.settings__list .settings__item:nth-child(2) img {
     padding: 14px;
-    background-color: #FFFFFF80;
-    border-radius: 30px;
 }
 
-.settings__list .settings__item:nth-child(2) img {
+.settings__email-item .settings__item-icon {
+    width: 60px;
+    height: 60px;
     padding: 18px;
 }
 
-.settings__btn {
+.settings__link {
+    display: block;
+    width: fit-content;
     font-weight: 700;
-    font-style: Bold;
     font-size: 18px;
     line-height: 24px;
-    letter-spacing: 0%;
     background-color: #67A5EB;
+    color: #fff;
     padding: 16px 48px;
     border-radius: 28px;
 }
 
-.settings__btn a {
-    color: #fff;
+@media (max-width: 1440px) {
+    .favorites__list {
+        gap: 20px;
+    }
+
+    .favorites__poster-img {
+        max-width: 200px;
+        max-height: 312px;
+    }
 }
 
-.favorites__heading--nofilms {
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: 0%;
-}
+@media (max-width: 600px) {
+    .account-section {
+        padding: 16px 0 152px;
+    }
 
-.favorites__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 224px);
-    gap: 64px 40px;
-}
-
-.favorites__item {
-    position: relative;
-}
-
-.favorites__item-btn--remove {
-    display: none;
-    position: absolute;
-    padding: 14px;
-    top: -20px;
-    right: -20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out;
-    justify-content: center;
-    align-items: center;
-}
-
-.favorites__item-btn--remove__img {
-    max-width: 12px;
-}
-
-.favorites__item > a > div > img {
-    border-radius: 16px;
-    width: 100%;
-    height: 336px;
-    box-shadow: 0px 0px 80px 0px #FFFFFF54;
-}
-
-.favorites__item:hover .favorites__item-btn--remove {
-    display: flex;
-}
-
-.account__tab-text--mobile {
-    display: none;
-}
-
-@media (max-width: 520px) {
     .account__title {
         font-size: 24px;
         line-height: 32px;
@@ -151,51 +170,24 @@
     }
 
     .account__tabs {
+        gap: 24px;
         margin-bottom: 40px;
     }
 
+    .account__tab-text {
+        display: none;
+    }
+
+    .account__tab-mobile-text {
+        display: block;
+    }
+    
+    /* favorites-tab */
     .favorites {
         overflow-x: auto;
         overflow-y: hidden;
         scroll-behavior: smooth;
         scrollbar-width: none;
-        width: calc(100% + 20px);
-        padding-bottom: 12px;
-        padding-left: 12px;
-        padding-top: 12px;
-    }
-
-    .favorites__item div {
-        background-color: #3c3c3c;
-        border: 1px solid hsla(0, 0%, 100%, .25);
-        border-radius: 16px;
-        box-shadow: 0 0 80px #ffffff54;
-        height: 336px;
-        overflow: visible;
-        position: relative;
-        width: 224px;
-    }
-
-    .favorites__item-btn--remove {
-        background-color: #fff;
-        border-radius: 50px;
-        font-size: 24px;
-        font-weight: 700;
-        left: -12px;
-        line-height: 133%;
-        padding: 8px 24px;
-        position: absolute;
-        top: -12px;
-        z-index: 1;
-    }
-
-    .favorites__item div > img {
-        border-radius: inherit;
-        height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
-        transition: scale .3s ease-in-out;
-        width: 100%;
     }
 
     .favorites__list {
@@ -207,31 +199,26 @@
         display: none;
     }
 
-    .favorites__item > a > div > img {
-        width: 224px;
-        max-width: 224px;
-        height: 336px;
-        max-height: 336px;
+    .favorites__poster-img {
+        position: relative;
+        overflow: visible;
+        background-color: #3c3c3c;
+        box-shadow: none;
     }
 
-    .account__tab-text {
-        display: none;
-    }
-
-    .account__tab-text--mobile {
-        display: block;
-    }
-
-    .favorites__heading--nofilms {
+    .favorites__heading {
         font-size: 26px;
         line-height: 30px;
     }
+}
 
-    .account-section {
-        padding: 16px 0 152px;
+@media (max-width: 480px) {
+    /* settings-tab */
+    .settings__list {
+        margin-bottom: 40px;
     }
 
-    .settings__item-label {
+    .settings__item-title {
         font-size: 14px;
         line-height: 20px;
         color: #FFFFFF80;

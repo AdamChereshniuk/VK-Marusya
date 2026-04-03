@@ -1,5 +1,3 @@
-/* Hero */
-
 .hero__inner {
     display: flex;
     justify-content: space-between;
@@ -34,14 +32,14 @@
     align-items: center;
 }
 
-.hero__detail--realeaseYear,
-.hero__detail--genres,
-.hero__detail--runtime {
+.hero__relase-year-detail,
+.hero__genres-detail,
+.hero__runtime-detail {
     line-height: 24px;
     color: #ffffffb2;
 }
 
-.hero__detail--raiting {
+.hero__raiting-detail {
     display: flex;
     gap: 4px;
     align-items: center;
@@ -66,7 +64,7 @@
     align-items: center;
 }
 
-.hero__btn--trailer {
+.hero__trailer-btn {
     color: #fff;
     background-color: #67A5EB;
     padding: 16px 48px;
@@ -75,7 +73,7 @@
     line-height: 24px;
 }
 
-.hero__btn--info {
+.hero__info-btn {
     color: #fff;
     background-color: #393B3C;
     padding: 16px 48px;
@@ -86,8 +84,8 @@
     border-radius: 28px;
 }
 
-.hero__btn--favourite,
-.hero__btn--update {
+.hero__favorite-btn,
+.hero__update-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -239,7 +237,7 @@
         flex-wrap: wrap;
     }
 
-    .hero__btn--trailer {
+    .hero__trailer-btn {
         width: 100%;
     }
 
@@ -266,18 +264,18 @@
         justify-content: space-between;
     }
 
-    .hero__btn--trailer,
-    .hero__btn--info {
+    .hero__trailer-btn,
+    .hero__info-btn {
         padding: 14px 38px;
     }
 
-    .hero__btn--favourite,
-    .hero__btn--update {
+    .hero__favorite-btn,
+    .hero__update-btn {
         padding: 16px 22px;
     }
 
-    .hero__btn--favourite img,
-    .hero__btn--update img {
+    .hero__favorite-btn img,
+    .hero__update-btn img {
         width: 24px;
         height: 24px;
     }

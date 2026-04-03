@@ -1,6 +1,6 @@
 export { MainPage } from "./MainPage";
 export { GenresPage } from "./GenresPage";
-export { GenreFilmsPage } from "./GenreFilmsPage";
-export { FilmPage } from "./FilmPage";
+export { GenreMoviesPage } from "./GenreMoviesPage";
+export { MoviePage } from "./MoviePage";
 export { AccountPage } from "./AccountPage";
 export { NotFoundPage } from "./NotFoundPage";

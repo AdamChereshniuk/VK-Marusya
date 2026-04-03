@@ -13,7 +13,6 @@
 
 .register-popup__box {
     display: flex;
-    align-items: flex-start;
     gap: 24px;
     width: 100%;
     max-width: 492px;
@@ -21,46 +20,30 @@
 
 .register-popup__content {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    row-gap: 40px;
-    padding: 64px 40px;
+    align-items: center;
+    gap: 40px;
     background-color: #fff;
+    padding: 64px 40px;
     border-radius: 24px;
     width: 100%;
     max-width: 420px;
 }
 
-.register-popup__btn--close {
-    border-radius: 24px;
-    padding: 15px;
+.register-popup__logo {
+    width: 132px;
+    height: 30px;
+}
+
+.register-popup__close-btn {
+    padding: 12px;
+    border-radius: 100%;
     background-color: #fff;
-    border-radius: 24px;
+    width: 48px;
+    height: 48px;
 }
 
-.register-popup__title {
-    width: fit-content;
-    display: block;
-    margin: 0 auto 24px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    color: #000000;
-}
-
-.register-popup__text {
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 0%;
-}
-
-.register-popup__btn--submit {
-    margin: 12px 0 24px;
-    font-weight: 700;
-    line-height: 24px;
-    background-color: #67A5EB;
-    color: #fff;
-    border-radius: 28px;
-    padding: 16px 97.5px;
-    width: 400px;
+.register-popup__close-btn > img {
+    width: 24px;
+    height: 24px;
 }

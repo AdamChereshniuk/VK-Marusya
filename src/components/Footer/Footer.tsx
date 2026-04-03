@@ -1,7 +1,7 @@
-import footer_VK_icon from "../../assets/Footer/VK.png";
-import footer_YouTube_icon from "../../assets/Footer/YouTube.png";
-import footer_OK_icon from "../../assets/Footer/OK.png";
-import footer_Telegram_icon from "../../assets/Footer/Telegram.png";
+import telegram from "../../assets/Footer/telegram.svg";
+import youtube from "../../assets/Footer/youtube.svg";
+import vk from "../../assets/Footer/vk.svg";
+import ok from "../../assets/Footer/ok.svg";
 import "./Footer.css";
 
 export const Footer = () => {
@@ -10,16 +10,16 @@ export const Footer = () => {
             <div className="container">
                 <ul className="footer__socials-list">
                     <li className="footer__socials-item">
-                        <img src={footer_VK_icon} alt="VK" />
+                        <img src={vk} alt="VK" />
                     </li>
                     <li className="footer__socials-item">
-                        <img src={footer_YouTube_icon} alt="YouTube" />
+                        <img src={youtube} alt="YouTube" />
                     </li>
                     <li className="footer__socials-item">
-                        <img src={footer_OK_icon} alt="OK" />
+                        <img src={ok} alt="OK" />
                     </li>
                     <li className="footer__socials-item">
-                        <img src={footer_Telegram_icon} alt="Telegram" />
+                        <img src={telegram} alt="Telegram" />
                     </li>
                 </ul>
             </div>

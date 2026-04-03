@@ -1,10 +1,9 @@
 import { getRandomMovie, getTop10Movies, getFilteredMovies, getGenres, getMovieById } from "./MoviesApi";
-import { loginUser, registerUser, logoutUser, fetchMe } from "./AuthApi";
 import { addMovieToFavorites, getFavoriteMovies, removeMovieFromFavorites } from "./FavoritesApi";
+import { loginUser, registerUser, logoutUser, fetchMe } from "./AuthApi";
 
 export async function validateResponse(response: Response): Promise<Response> {
     if(!response.ok) throw new Error(await response.text()); 
-
     return response;
 };
 

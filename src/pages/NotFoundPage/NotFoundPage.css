@@ -1,6 +1,6 @@
 .notfound-section {
-    color: #fff;
     padding: 64px 0 160px;
+    color: #fff;
 }
 
 .notfound__wrapper {
@@ -10,24 +10,22 @@
 }
 
 .notfound__title {
+    margin-bottom: 10px;
     font-size: 40px;
     font-weight: 700;
 }
 
-.notfound__message {
-    margin-top: 10px;
+.notfound__text {
+    margin-bottom: 30px;
     font-size: 20px;
     font-weight: 500;
 }
 
-.notfound__btn--mainpage a {
-    color: #fff;
+.notfound__link {
     background-color: #67A5EB;
+    color: #fff;
     padding: 16px 48px;
     border-radius: 28px;
     font-weight: 700;
     line-height: 24px;
-    width: fit-content;
-    margin-top: 40px;
-    display: block;
 }

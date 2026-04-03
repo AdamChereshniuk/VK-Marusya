@@ -7,11 +7,8 @@ export const NotFoundPage = () => {
             <div className="container">
                 <div className="notfound__wrapper">
                     <h2 className="notfound__title">Ошибка 404</h2>
-                    <p className="notfound__message">Ваша страница не найдена :(</p>
-
-                    <button className="notfound__btn--mainpage">
-                        <Link to={`/`}>Перейти на главную</Link>
-                    </button>
+                    <p className="notfound__text">Ваша страница не найдена :(</p>
+                    <Link className="notfound__link" to={`/`}>Перейти на главную</Link>
                 </div>
             </div>
         </section>

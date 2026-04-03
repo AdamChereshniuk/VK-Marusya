@@ -1,29 +1,27 @@
+import { hideRegisterPopup } from "../../redux/Slices/doesShowRegisterPopupSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { RegisterForm } from "../RegisterForm/RegisterForm";
 import popup_logo from "../../assets/MainPage/popup-logo.png";
-import closeBtnImg from "../../assets/Header/close btn.svg";
-import { MouseEventHandler } from "react";
+import closeBtnImg from "../../assets/Header/close.svg";
 import "./RegisterPopup.css";
 
-type RegisterPopupProps = {
-    doesShowRegisterPopup: boolean,
-    handleOnClickCloseBtn: MouseEventHandler,
-    handleOnClickSubmitBtn: MouseEventHandler,
-};
+export const RegisterPopup = () => {
+    const doesShowRegisterPopup = useAppSelector((state) => state.showRegisterPopup.doesShowRegisterPopup);
+    const handleOnClickCloseBtn = () => dispatch(hideRegisterPopup());
+    const dispatch = useAppDispatch();
 
-export const RegisterPopup = ({doesShowRegisterPopup, handleOnClickCloseBtn, handleOnClickSubmitBtn}: RegisterPopupProps) => {
-    return(
+    return (
         <>
             {doesShowRegisterPopup && (
                 <div className="register-popup">
                     <div className="register-popup__box">
                         <div className="register-popup__content">
-                            <img className="register-popup__logo" src={popup_logo} alt="Логотип"/>
-                            <h3 className="register-popup__title">Регистрация завершена</h3>
-                            <p className="register-popup__text">Используйте вашу электронную почту для входа</p>
-
-                            <button className="register-popup__btn--submit primary__btn" onClick={handleOnClickSubmitBtn}>Войти</button>
+                            <img className="register-popup__logo" src={popup_logo} alt="Лого"/>
+                            <RegisterForm/>
                         </div>
-                        <button className="register-popup__btn--close" onClick={handleOnClickCloseBtn}>
-                            <img src={closeBtnImg} alt="Крестик" />
+
+                        <button className="register-popup__close-btn" onClick={handleOnClickCloseBtn}>
+                            <img src={closeBtnImg} alt="Закрыть"/>
                         </button>
                     </div>
                 </div>

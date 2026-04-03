@@ -1,18 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import doesShowLoginPopupSlice from "./Slices/doesShowLoginPopupSlice";
 import doesShowRegisterPopupSlice from "./Slices/doesShowRegisterPopupSlice";
-import doesShowLoginPopupLoginPartSlice from "./Slices/doesShowLoginPopupLoginPartSlice";
-import doesShowLoginPopupRegisterPartSlice from "./Slices/doesShowLoginPopupRegisterPartSlice";
+import doesShowSuccessRegistrationPopupSlice from "./Slices/doesShowSuccessRegistrationPopupSlice";
 
 export const store = configureStore({
     reducer: {
         showLoginPopup: doesShowLoginPopupSlice,
-        showRegister: doesShowRegisterPopupSlice,
-        showLoginPopupLoginPart: doesShowLoginPopupLoginPartSlice,
-        showLoginPopupRegisterPart: doesShowLoginPopupRegisterPartSlice,
+        showRegisterPopup: doesShowRegisterPopupSlice,
+        showSuccessRegistrationPopup: doesShowSuccessRegistrationPopupSlice,
     },
 });
 
 export type AppStore = typeof store;
-export type RootState = ReturnType<AppStore['getState']>;
-export type AppDispatch = AppStore['dispatch'];
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];

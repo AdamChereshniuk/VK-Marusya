@@ -1,37 +1,47 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    row-gap: 12px;
+    gap: 24px;
 }
 
-.login__btn--submit {
-    margin-top: 12px;
-    background-color: #67A5EB;
-    padding: 16px 143px;
-    border-radius: 28px;
+.login-form__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-form__input {
     width: 100%;
-    color: #fff;
-    font-weight: 700;
-    line-height: 24px;
-}
-
-.login__input {
-    display: block;
     border: 1px solid #00000066;
+    color: #00000066;
     border-radius: 8px;
     padding: 16px;
-    width: 100%;
-}
-
-.login__input::placeholder {
+    font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
 }
 
-.login__input:hover,
-.login__input:focus {
-    border: 1px solid #B4A9FF;
+.login-form__input.error {
+    border-color: #FF7575;
 }
 
-.login__input:invalid {
-    border: 1px solid #FF7575;
+.login-form__error {
+    color: #FF7575;
+}
+
+.login-form__submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: #67A5EB;
+    border-radius: 28px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+}
+
+.login-popup__change-btn {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
 }

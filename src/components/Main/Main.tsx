@@ -1,26 +1,22 @@
+import { MainPage, GenresPage, GenreMoviesPage, MoviePage, AccountPage, NotFoundPage } from "../../pages";
 import { Route, Routes } from "react-router-dom";
-import {
-    MainPage,
-    GenresPage,
-    GenreFilmsPage,
-    FilmPage,
-    AccountPage,
-    NotFoundPage
-} from "../../pages";
-import { User } from "../../api/AuthApi";
+import { IUser } from "../../api/AuthApi";
 
-export const Main = ({ currentUser, isCurrentUserAuthorized }: { currentUser?: User, isCurrentUserAuthorized: boolean }) => {
+interface IMainProps {
+    isUserAuthorized: boolean;
+    userData?: IUser;
+};
+
+export const Main = ({ isUserAuthorized, userData }: IMainProps) => {
     return (
         <main className="main">
             <Routes>
-                <Route path="/" element={<MainPage isCurrentUserAuthorized={isCurrentUserAuthorized} />} />
-                <Route path="/genres" element={<GenresPage />} />
-                <Route path="/genres/:genreId" element={<GenreFilmsPage />} />
-                <Route path="/movies/:movieId" element={<FilmPage isCurrentUserAuthorized={isCurrentUserAuthorized} />} />
-                <Route path="*" element={<NotFoundPage />} />
-                {currentUser && (
-                    <Route path="/currentUserAccount" element={<AccountPage currentUser={currentUser} />} />
-                )}
+                <Route path="/" element={<MainPage isUserAuthorized={isUserAuthorized}/>}/>
+                <Route path="/genres" element={<GenresPage/>}/>
+                <Route path="/genres/:genreId" element={<GenreMoviesPage/>}/>
+                <Route path="/movies/:movieId" element={<MoviePage isUserAuthorized={isUserAuthorized}/>}/>
+                <Route path="*" element={<NotFoundPage/>}/>
+                {isUserAuthorized && userData && <Route path="/userAccount" element={<AccountPage userData={userData}/>}/>}
             </Routes>
         </main>
     );
