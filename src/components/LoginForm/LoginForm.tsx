@@ -1,3 +1,4 @@
+import { showSuccessRegistrationPopup } from "../../redux/Slices/doesShowSuccessRegistrationPopupSlice";
 import { showRegisterPopup } from "../../redux/Slices/doesShowRegisterPopupSlice";
 import { hideLoginPopup } from "../../redux/Slices/doesShowLoginPopupSlice";
 import { FormField } from "../../components/FormField/FormField";
@@ -23,6 +24,8 @@ export const LoginForm = () => {
         mutationFn: ({ email, password }: TLoginForm) => loginUser(email, password),
         onSuccess() {
             queryClient.invalidateQueries({ queryKey: ["users", "me"] });
+            dispatch(hideLoginPopup());
+            dispatch(showSuccessRegistrationPopup());
         },
         onError(e) {
             console.log(JSON.parse(e.message)[0].message);

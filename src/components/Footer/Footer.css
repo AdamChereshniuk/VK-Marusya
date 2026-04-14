@@ -6,11 +6,11 @@
 
 .footer__socials-list {
   display: flex;
-  gap: 24px;
   justify-content: flex-end;
+  gap: 24px;
 }
 
-.footer__socials-item > img {
+.footer__socials-img {
   width: 36px;
   height: 36px;
 }

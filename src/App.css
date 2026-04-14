@@ -10,12 +10,8 @@
   padding: 0 15px;
 }
 
-.none {
-  display: none;
-}
-
-.flex {
-  display: flex;
+.main {
+  height: 100%;
 }
 
 .primary__btn {

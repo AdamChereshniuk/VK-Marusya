@@ -10,16 +10,16 @@ export const Footer = () => {
             <div className="container">
                 <ul className="footer__socials-list">
                     <li className="footer__socials-item">
-                        <img src={vk} alt="VK" />
+                        <img className="footer__socials-img" src={vk} alt="VK" />
                     </li>
                     <li className="footer__socials-item">
-                        <img src={youtube} alt="YouTube" />
+                        <img className="footer__socials-img" src={youtube} alt="YouTube" />
                     </li>
                     <li className="footer__socials-item">
-                        <img src={ok} alt="OK" />
+                        <img className="footer__socials-img" src={ok} alt="OK" />
                     </li>
                     <li className="footer__socials-item">
-                        <img src={telegram} alt="Telegram" />
+                        <img className="footer__socials-img" src={telegram} alt="Telegram" />
                     </li>
                 </ul>
             </div>

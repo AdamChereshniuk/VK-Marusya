@@ -26,9 +26,12 @@ export const SuccessRegistrationPopup = () => {
                                 <span className="success-registration-popup__text">Используйте вашу электронную почту для входа</span>
                                 <button className="success-registration-popup__submit-btn" onClick={handleOnClickSubmitBtn}>Войти</button>
                             </div>
+                            <button className="success-registration-popup__mobile-close-btn" onClick={handleOnClickCloseBtn}>
+                                <img className="success-registration-popup__mobile-close-img" src={cross} alt="Закрыть"/>
+                            </button>
                         </div>
                         <button className="success-registration-popup__close-btn" onClick={handleOnClickCloseBtn}>
-                            <img src={cross} alt="Закрыть"/>
+                            <img className="success-registration-popup__close-img" src={cross} alt="Закрыть"/>
                         </button>
                     </div>
                 </div>

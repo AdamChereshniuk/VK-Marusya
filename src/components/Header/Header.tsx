@@ -114,13 +114,13 @@ export const Header = ({ isUserAuthorized, userData }: IHeaderProps) => {
                         <nav className="header__mobile-nav">
                             <ul className="header__mobile-list">
                                 <li className="header__mobile-item">
-                                    <Link to={`/genres`}>
-                                        <img src={genres_icon} alt="Жанры"/>
+                                    <Link className="header__mobile-link" to={`/genres`}>
+                                        <img className="header__mobile-img" src={genres_icon} alt="Жанры"/>
                                     </Link>
                                 </li>
                                 <li className="header__mobile-item">
-                                    <Link to={`/genres`}>
-                                        <img src={search_icon} alt="Поиск"/>
+                                    <Link className="header__mobile-link" to={`/genres`}>
+                                        <img className="header__mobile-img" src={search_icon} alt="Поиск"/>
                                     </Link>
                                 </li>
                                 <li className="header__mobile-item">
@@ -128,12 +128,12 @@ export const Header = ({ isUserAuthorized, userData }: IHeaderProps) => {
                                         isUserAuthorized
                                         ? (
                                             <Link to={`/userAccount`}>
-                                                <img src={person_icon} alt="Профиль"/>
+                                                <img className="header__mobile-img" src={person_icon} alt="Профиль"/>
                                             </Link>
                                         )
                                         : (
                                             <button onClick={handleOnClickHeaderBtn}>
-                                                <img src={person_icon} alt="Профиль"/>
+                                                <img className="header__mobile-img" src={person_icon} alt="Профиль"/>
                                             </button>
                                         )
                                     }

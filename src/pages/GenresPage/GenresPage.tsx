@@ -33,7 +33,7 @@ export function GenresPage() {
                         <li className="genres__item" key={item}>
                             <Link className="genres__item-link" to={`/genres/${item}`}>
                                 <img className="genres__item-img" src={imagesArr[index]} alt="Фото нет"/>
-                                <span className="genres__item-title">{item}</span>
+                                <span className="genres__item-title">{`${item?.slice(0, 1).toUpperCase()}${item?.slice(1)}`}</span>
                             </Link>
                         </li>
                     ))}

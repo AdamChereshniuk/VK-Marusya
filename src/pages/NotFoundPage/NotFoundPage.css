@@ -10,13 +10,12 @@
 }
 
 .notfound__title {
-    margin-bottom: 10px;
     font-size: 40px;
     font-weight: 700;
 }
 
 .notfound__text {
-    margin-bottom: 30px;
+    margin: 10px 0 30px;
     font-size: 20px;
     font-weight: 500;
 }

@@ -26,7 +26,7 @@ export const TrailerPopup = ({ isOpen, trailerUrl, onClose }: ITrailerPopupProps
                         </div>
                         
                         <button className="trailer-popup__close-btn" onClick={onClose}>
-                            <img src={cross} alt="Закрыть"/>
+                            <img className="trailer-popup__close-img" src={cross} alt="Закрыть"/>
                         </button>
                     </div>
                 </div>

@@ -31,18 +31,17 @@ export function GenreMoviesPage() {
     return (
         <section className="genre-movies-section">
             <div className="container">
-                <h2 className="genre-movies__heading">
-                    <Link to={"/genres"}>
-                        <img src={arrow} alt="Стрелка"/> {genreId}
-                    </Link>
-                </h2>
+                <Link className="genre-movies__back-link" to={"/genres"}>
+                    <img className="genre-movies__back-img" src={arrow} alt="Стрелка"/>
+                    {`${genreId?.slice(0, 1).toUpperCase()}${genreId?.slice(1)}`}
+                </Link>
 
                 <ul className="genre-movies__list">
                     {visibleGenreMoviesList && visibleGenreMoviesList.map((item, index) => {
                         return (
                             <li className="genre-movies__item" key={index + 1} style={{color: "red"}}>
-                                <Link to={`/movies/${item.id}`}>
-                                    <img src={item.posterUrl} alt="Фото нет"/>
+                                <Link className="genre-movies__item-link" to={`/movies/${item.id}`}>
+                                    <img className="genre-movies__item-img" src={item.posterUrl} alt="Фото нет"/>
                                 </Link>
                             </li>  
                         )

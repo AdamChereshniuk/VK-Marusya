@@ -1,3 +1,8 @@
+.main-page {
+    height: 100%;
+}
+
+/* Hero */
 .hero__inner {
     display: flex;
     justify-content: space-between;
@@ -11,6 +16,29 @@
     max-width: 600px;
 }
 
+.hero__details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hero__raiting-detail {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: #308E21;
+    padding: 4px 12px;
+    border-radius: 16px;
+    color: #fff;
+}
+
+.hero__relase-year-detail, .hero__genres-detail, .hero__runtime-detail {
+    line-height: 24px;
+    color: #ffffffb2;
+}
+
 .hero__title {
     margin: 16px 0;
     font-weight: 700;
@@ -19,49 +47,17 @@
     color: #fff;
 }
 
-.hero__text {
+.hero__text {   
     font-size: 24px;
     line-height: 32px;
     color: #ffffffb2;
     margin-bottom: 60px;
 }
 
-.hero__details {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-.hero__relase-year-detail,
-.hero__genres-detail,
-.hero__runtime-detail {
-    line-height: 24px;
-    color: #ffffffb2;
-}
-
-.hero__raiting-detail {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    justify-content: center;
-    background-color: #308E21;
-    padding: 4px 12px;
-    border-radius: 16px;
-    color: #fff;
-}
-
-.hero__poster {
-    width: 100%;
-    max-width: 680px;
-    height: 100%;
-    max-height: 522px;
-    border-radius: 16px;
-}
-
 .hero__btns {
     display: flex;
-    gap: 16px;
     align-items: center;
+    gap: 16px;
 }
 
 .hero__trailer-btn {
@@ -84,8 +80,7 @@
     border-radius: 28px;
 }
 
-.hero__favorite-btn,
-.hero__update-btn {
+.hero__favorite-btn, .hero__update-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,12 +90,24 @@
     background-color: #333333;
 }
 
-.hero__btns img {
+.hero__favorite-img, .hero__update-img {
     width: 24px;
+    min-width: 24px;
     max-width: 24px;
+    height: 24px;
+    min-height: 24px;
+    max-height: 24px;
 }
 
-/* Top-Movies */
+.hero__poster {
+    width: 100%;
+    max-width: 680px;
+    height: 100%;
+    max-height: 552px;
+    border-radius: 16px;
+}
+
+/* Top-movies */
 .top-movies {
     padding: 40px 0 120px;
 }
@@ -110,22 +117,20 @@
     font-size: 40px;
     line-height: 48px;
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 64px;
 }
 
 .top-movies__list {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-content: space-between;
-    row-gap: 64px;
-    column-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+    gap: 64px 40px;
 }
 
 .top-movies__item {
     position: relative;
 }
 
-.top-movies__item span {
+.top-movies__item-number {
     position: absolute;
     font-weight: 700;
     font-size: 24px;
@@ -138,101 +143,41 @@
     left: -12px;
 }
 
-.top-movies__item img {
-    box-shadow: 0px 0px 80px 0px #FFFFFF54;
+.top-movies__item-img {
+    width: 100%;
     height: 100%;
+    box-shadow: 0px 0px 80px 0px #FFFFFF54;
     border-radius: 16px;
 }
 
-.player {
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.7);
-}
+@media (max-width: 1200px) {
+    .hero__title {
+        font-size: 38px;
+    }
 
-.player__box {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    width: 100%;
-    max-width: 1032px;
-    position: relative;
-}
+    .hero__text {
+        font-size: 22px;
+        margin-bottom: 40px;
+    }
 
-.player__content {
-    width: 100%;
-    max-width: 960px;
-    height: 100%;
-    max-height: 540px;
+    .hero__trailer-btn, .hero__info-btn {
+        padding: 16px 32px;
+    }
 }
-
-.player__btn--close {
-    background-color: #fff;
-    border-radius: 24px;
-    padding: 12px;
-}
-
-.player__title {
-    z-index: 2;
-    position: fixed;
-    bottom: 202px;
-    left: 223px;
-    padding: 24px 40px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    width: 100%;
-    max-width: 920px;
-    background-color: #0A0B0B80;
-}
-
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
     .hero__inner {
         flex-direction: column-reverse;
-        align-items: start;
-        max-width: 100%;
     }
 
     .hero__poster {
         max-width: 100%;
-        height: 100%;
-        max-height: 300px;
     }
 
     .hero__info {
         max-width: 100%;
     }
-
-    .top-movies__list {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
-
-@media (max-width: 620px) {
-    .hero__detail--realeaseYear,
-    .hero__detail--genres,
-    .hero__detail--runtime {
-        line-height: 20px;
-        font-size: 14px;
-    }
-
-    .hero__title {
-        font-size: 24px;
-        line-height: 32px;
-    }
-
-    .hero__text {
-        font-size: 18px;
-        line-height: 24px;
-    }
-
+@media (max-width: 520px) {
     .hero__btns {
         flex-wrap: wrap;
     }
@@ -241,111 +186,61 @@
         width: 100%;
     }
 
+    .hero__info-btn {
+        flex-grow: 1;
+        text-align: center;
+    }
+
     .top-movies__heading {
+        margin-bottom: 40px;
         font-size: 24px;
         line-height: 32px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero__inner {
-        padding: 0 0 24px;
-    }
-
-    .hero__title {
-        margin: 12px 0;
-    }
-    
-    .hero__text {
-        margin-bottom: 32px;
-    }
-
-    .hero__btns {
-        justify-content: space-between;
-    }
-
-    .hero__trailer-btn,
-    .hero__info-btn {
-        padding: 14px 38px;
-    }
-
-    .hero__favorite-btn,
-    .hero__update-btn {
-        padding: 16px 22px;
-    }
-
-    .hero__favorite-btn img,
-    .hero__update-btn img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .top-movies {
-        padding: 32px 0;
-    }
-
-    .top-movies__wrapper {
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding-bottom: 12px;
-        padding-left: 12px;
-        padding-top: 12px;
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-        width: calc(100% + 20px);
     }
 
     .top-movies__list {
         display: flex;
         gap: 40px;
-        /* width: 100%;
-        grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: 1fr;
-        overflow-x: scroll; */
-    }
-
-    .top-movies__item div {
-        background-color: #3c3c3c;
-        border: 1px solid hsla(0, 0%, 100%, .25);
-        border-radius: 16px;
-        box-shadow: 0 0 80px #ffffff54;
-        height: 336px;
-        overflow: visible;
-        position: relative;
-        width: 224px;
-    }
-
-    .top-movies__item div span {
-        background-color: #fff;
-        border-radius: 50px;
-        color: #6a5dc2;
-        font-size: 24px;
-        font-weight: 700;
-        left: -12px;
-        line-height: 133%;
-        padding: 8px 24px;
-        position: absolute;
-        top: -12px;
-        z-index: 1;
-    }
-
-    .top-movies__item div img {
-        border-radius: inherit;
-        height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
-        transition: scale .3s ease-in-out;
-        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-left: 12px;
+        padding-top: 12px;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
     }
 
     .top-movies__list::-webkit-scrollbar {
         display: none;
     }
 
-    .top-movies__item img {
+    .top-movies__item-img {
         width: 224px;
+        min-width: 224px;
         max-width: 224px;
         height: 336px;
+        min-height: 336px;
         max-height: 336px;
+        box-shadow: none;
+    }
+}
+@media (max-width: 480px) {
+    .hero__inner {
+        gap: 24px;
+    }
+
+    .hero__relase-year-detail, .hero__genres-detail, .hero__runtime-detail {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .hero__title {
+        margin: 12px 0;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .hero__text {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 32px;
     }
 }

@@ -66,7 +66,7 @@ export function MainPage({ isUserAuthorized }: { isUserAuthorized: boolean }) {
     };
 
     return (
-        <>
+        <div className="main-page">
             <section className="hero-section">
                 <div className="container">
                     <div className="hero__inner">
@@ -94,10 +94,10 @@ export function MainPage({ isUserAuthorized }: { isUserAuthorized: boolean }) {
                                 <button className="hero__trailer-btn primary__btn" onClick={() => setDoesShowPlayer(true)}>Трейлер</button>
                                 <Link className="hero__info-btn" to={`/movies/${randomMovie?.id}`}>О фильме</Link>
                                 <button className="hero__favorite-btn" onClick={isUserAuthorized ? handleOnClickFavouriteBtnTwo : handleOnClickFavouriteBtnOne}>
-                                    <img src={isRandomMovieFavorite ? full_heart : heart} alt="Сердце"/>
+                                    <img className="hero__favorite-img" src={isRandomMovieFavorite ? full_heart : heart} alt="Сердце"/>
                                 </button>
                                 <button className="hero__update-btn" onClick={() => refetch()}>
-                                    <img src={update_movie} alt="Обновить фильм"/>
+                                    <img className="hero__update-img" src={update_movie} alt="Обновить фильм"/>
                                 </button>
                             </div>
                         </div>
@@ -122,11 +122,9 @@ export function MainPage({ isUserAuthorized }: { isUserAuthorized: boolean }) {
                         <ul className="top-movies__list">
                             {top10Movies?.map((item, index: number) => (
                                 <li className="top-movies__item" key={index + 1}>
-                                    <Link to={`/movies/${item.id}`}>
-                                        <div>
-                                            <span>{index + 1}</span>
-                                            <img src={item.posterUrl} loading="lazy"/>
-                                        </div>
+                                    <Link className="top-movies__item-link" to={`/movies/${item.id}`}>
+                                        <span className="top-movies__item-number">{index + 1}</span>
+                                        <img className="top-movies__item-img" src={item.posterUrl} loading="lazy"/>
                                     </Link>
                                 </li>
                             ))}
@@ -134,6 +132,6 @@ export function MainPage({ isUserAuthorized }: { isUserAuthorized: boolean }) {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };

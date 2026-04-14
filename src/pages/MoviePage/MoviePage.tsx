@@ -92,7 +92,7 @@ export function MoviePage({ isUserAuthorized }: { isUserAuthorized: boolean }) {
                                     <div className="movie__btns">
                                         <button className="movie__trailer-btn primary__btn" onClick={() => setDoesShowPlayer(true)}>Трейлер</button>
                                         <button className="movie__favorite-btn" onClick={isUserAuthorized ? handleOnClickFavoriteBtnTwo : handleOnClickFavoriteBtnOne}>
-                                            <img src={isMovieFavorite ? full_heart : heart} alt="Сердце"/>
+                                            <img className="movie__favorite-img" src={isMovieFavorite ? full_heart : heart} alt="Сердце"/>
                                         </button>
                                     </div>
                                 </div>

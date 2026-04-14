@@ -28,6 +28,7 @@
     border-radius: 24px;
     width: 100%;
     max-width: 420px;
+    position: relative;
 }
 
 .register-popup__logo {
@@ -42,8 +43,42 @@
     width: 48px;
     height: 48px;
 }
-
-.register-popup__close-btn > img {
+.register-popup__close-img {
     width: 24px;
     height: 24px;
+}
+
+.register-popup__mobile-close-btn {
+    display: none;
+}
+.register-popup__mobile-close-img {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 1440px) {
+    .register-popup__box {
+        padding: 0 20px;
+        gap: 0;
+    }
+
+    .register-popup__content {
+        padding: 64px 20px 32px;
+        gap: 32px;
+    }
+
+    .register-popup__close-btn {
+        display: none;
+    }
+
+    .register-popup__mobile-close-btn {
+        display: block;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 12px;
+        background-color: #fff;
+        width: 48px;
+        height: 48px;
+    }
 }

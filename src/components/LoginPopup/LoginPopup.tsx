@@ -18,9 +18,13 @@ export const LoginPopup = () => {
                         <div className="login-popup__content">
                             <img className="login-popup__logo" src={logo} alt="Лого"/>
                             <LoginForm/>
+                            <button className="login-popup__mobile-close-btn" onClick={handleOnClickCloseBtn}>
+                                <img className="login-popup__mobile-close-img" src={close} alt="Закрыть"/>
+                            </button>
                         </div>
+
                         <button className="login-popup__close-btn" onClick={handleOnClickCloseBtn}>
-                            <img src={close} alt="Закрыть"/>
+                            <img className="login-popup__close-img" src={close} alt="Закрыть"/>
                         </button>
                     </div>
                 </div>

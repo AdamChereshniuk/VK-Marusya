@@ -18,10 +18,13 @@ export const RegisterPopup = () => {
                         <div className="register-popup__content">
                             <img className="register-popup__logo" src={popup_logo} alt="Лого"/>
                             <RegisterForm/>
+                            <button className="register-popup__mobile-close-btn" onClick={handleOnClickCloseBtn}>
+                                <img className="register-popup__mobile-close-img" src={closeBtnImg} alt="Закрыть"/>
+                            </button>
                         </div>
 
                         <button className="register-popup__close-btn" onClick={handleOnClickCloseBtn}>
-                            <img src={closeBtnImg} alt="Закрыть"/>
+                            <img className="register-popup__close-img" src={closeBtnImg} alt="Закрыть"/>
                         </button>
                     </div>
                 </div>

@@ -10,8 +10,10 @@
 }
 
 .header__logo-img {
-  width: 140px;
-  height: 32px;
+  width: 100%;
+  height: 100%;
+  max-width: 140px;
+  max-height: 32px;
 }
 
 .header__nav {
@@ -28,11 +30,10 @@
 }
 
 .header__item {
-  font-weight: 400;
   font-size: 24px;
   line-height: 32px;
 }
-.header__item > a {
+.header__item-link {
   color: #fff;
 }
 
@@ -94,7 +95,6 @@
 }
 
 .header__relaseYear-detail, .header__genres-detail, .header__runtime-detail {
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #FFFFFFB2;
@@ -104,20 +104,18 @@
 .header__movie-title {
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
   line-height: 24px;
 }
 
 .header__login-btn, .header__login-link {
-  font-weight: 400;
   font-size: 24px;
   line-height: 32px;
   color: #fff;
 }
 
 .header__login-link {
-  border-bottom: 1.5px solid #DC5DFC;
-  padding-bottom: 16px;
+  border-bottom: 1px solid #DC5DFC;
+  padding-bottom: 8px;
 }
 
 .header__mobile-nav {
@@ -130,8 +128,28 @@
   gap: 20px;
 }
 
+.header__mobile-img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 1200px) {
+  .header__nav {
+    gap: 30px;
+  }
+
+  .header__list {
+    gap: 30px;
+  }
+
+  .header__search {
+    max-width: 460px;
+    min-width: 460px;
+  }
+}
+
 @media (max-width: 980px) {
-  .header__login-btn, .header__nav {
+  .header__login-btn, .header__login-link, .header__nav {
     display: none;
   }
 

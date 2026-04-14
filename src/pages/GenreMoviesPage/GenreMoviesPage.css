@@ -2,17 +2,20 @@
     padding: 64px 0 160px;
 }
 
-.genre-movies__heading a {
+.genre-movies__back-link {
     display: flex;
-    gap: 30px;
     align-items: center;
+    gap: 16px;
     font-weight: 700;
-    font-style: Bold;
     font-size: 48px;
     line-height: 56px;
-    letter-spacing: 0%;
     color: #fff;
     margin-bottom: 64px;
+}
+
+.genre-movies__back-img {
+    width: 40px;
+    height: 40px;
 }
 
 .genre-movies__list {
@@ -22,7 +25,7 @@
     margin-bottom: 64px;
 }
 
-.genre-movies__item > img {
+.genre-movies__item-img {
     border-radius: 16px;
 }
 
@@ -32,10 +35,7 @@
     padding: 16px 48px;
     border-radius: 28px;
     font-weight: 700;
-    font-style: Bold;
-    font-size: 18px;
     line-height: 24px;
-    letter-spacing: 0%;
     margin: 0 auto;
     display: block;
 }
@@ -45,14 +45,21 @@
         padding: 16px 0 40px;
     }
 
-    .genre-movies__heading a {
+    .genre-movies__back-link {
+        gap: 8px;
         margin-bottom: 40px;
         font-size: 24px;
         line-height: 32px;
     }
 
+    .genre-movies__back-img {
+        width: 32px;
+        height: 32px;
+    }
+
     .genre-movies__list {
         grid-gap: 24px;
+        margin-bottom: 40px;
     }
 
     .genre-movies__more-btn {
