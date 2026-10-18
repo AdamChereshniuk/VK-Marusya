@@ -69,8 +69,9 @@
 }
 
 .header__movie-img {
-  width: 40px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
 }
 
 .header__movie-content {
@@ -102,6 +103,7 @@
 }
 
 .header__movie-title {
+  width: fit-content;
   color: #fff;
   font-weight: 700;
   line-height: 24px;

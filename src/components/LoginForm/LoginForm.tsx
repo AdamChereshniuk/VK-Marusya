@@ -47,7 +47,7 @@ export const LoginForm = () => {
                 <FormField>
                     <input className={`login-form__input ${errors.password?.message && "error"}`} placeholder="Пароль" type="password" {...register("password")}/>
                 </FormField>
-                {loginMutation.error && <span className="login-form__error">{loginMutation.error.message}</span>}
+                {loginMutation.error && <span className="login-form__error">Не удалось войти. Проверьте данные и попробуйте снова.</span>}
             </div>
             
             <button className="login-form__submit-btn primary__btn" type="submit">Войти</button>

@@ -27,8 +27,9 @@ export const RegisterForm = () => {
         dispatch(showLoginPopup());
     };
     
-    const { register, handleSubmit, formState: {errors} } = useForm<TRegisterForm>({ resolver: zodResolver(RegisterUserSchema), mode: "all" });
-    
+    const { register, handleSubmit, watch, formState: {errors} } = useForm<TRegisterForm>({ resolver: zodResolver(RegisterUserSchema), mode: "all" });
+    const password = watch("password");
+
     const registerMutation = useMutation({
         mutationFn: ({ email, password, firstname, surname }: TRegisterForm) => Api.registerUser(email, password, firstname, surname),
         onSuccess() {
@@ -48,21 +49,21 @@ export const RegisterForm = () => {
             <h3 className="register-form__title">Регистрация</h3>
             <div className="register-form__inputs">
                 <FormField>
-                    <input className={`register-form__input ${errors.email?.message && "error"}`} placeholder="Электронная почта" type="text" {...register("email")}/>
+                    <input className={`register-form__input ${errors.email?.message && "error"}`} placeholder="Электронная почта" type="email" {...register("email")}/>
                 </FormField>
                 <FormField>
-                    <input className={`register-form__input ${errors.firstname?.message && "error"}`} placeholder="Имя" type="text" {...register("firstname")}/>
+                    <input className={`register-form__input ${errors.firstname?.message && "error"}`} placeholder="Имя" type="text" {...register("firstname", { minLength: { value: 2, message: "Минимум 2 символа" }, maxLength: { value: 50, message: "Максимум 50 символов" } })}/>
                 </FormField>
                 <FormField>
-                    <input className={`register-form__input ${errors.surname?.message && "error"}`} placeholder="Фамилия" type="text" {...register("surname")} />
+                    <input className={`register-form__input ${errors.surname?.message && "error"}`} placeholder="Фамилия" type="text" {...register("surname", { minLength: { value: 2, message: "Минимум 2 символа" }, maxLength: { value: 50, message: "Максимум 50 символов" } })} />
                 </FormField>
                 <FormField>
-                    <input className={`register-form__input ${errors.password?.message && "error"}`} placeholder="Пароль" type="text" {...register("password")}/>
+                    <input className={`register-form__input ${errors.password?.message && "error"}`} placeholder="Пароль" type="text" {...register("password", { pattern: { value: /^[A-Za-z0-9@]+$/, message: "Пароль может содержать буквы, цифры и @" }, minLength: { value: 8, message: "Минимум 8 символов" }, maxLength: { value: 50, message: "Максимум 50 символов" } })}/>
                 </FormField>
                 <FormField>
-                    <input className={`register-form__input ${errors.confirmPassword?.message && "error"}`} placeholder="Подтвердите пароль" type="text" {...register("confirmPassword")}/>
+                    <input className={`register-form__input ${errors.confirmPassword?.message && "error"}`} placeholder="Подтвердите пароль" type="text" {...register("confirmPassword", { validate: value => password === value || "Пароли должны совпадать" })}/>
                 </FormField>
-                {registerMutation.error && <span className="register-form__error">{registerMutation.error.message}</span>}
+                {registerMutation.error && <span className="register-form__error">Не удалось зарегистрироваться. Проверьте данные и попробуйте снова.</span>}
             </div>
 
             <button className="register-form__submit-btn primary__btn" type="submit">Создать аккаунт</button>

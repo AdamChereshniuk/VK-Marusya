@@ -5,7 +5,7 @@ import { RegisterPopup } from "../RegsiterPopup/RegisterPopup";
 import { LoginPopup } from "../LoginPopup/LoginPopup";
 import { useAppDispatch } from "../../redux/hooks";
 import { useQuery } from "@tanstack/react-query";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { queryClient } from "../../queryClient";
 import { IUser } from "../../api/AuthApi";
 import rating_star from "../../assets/MainPage/raiting-star.svg";
@@ -22,6 +22,7 @@ interface IHeaderProps {
 };
 
 export const Header = ({ isUserAuthorized, userData }: IHeaderProps) => {
+    const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState<string>("");
     const [isHeaderMoviesListOpen, setIsHeaderMoviesListOpen] = useState<boolean>(false);
 
@@ -77,7 +78,11 @@ export const Header = ({ isUserAuthorized, userData }: IHeaderProps) => {
                                         };
 
                                         return (
-                                            <Link to={`/movies/${item.id}`} key={item.id}>
+                                            <button onClick={() => {
+                                                setIsHeaderMoviesListOpen(false);
+                                                navigate(`/movies/${item.id}`);
+                                                window.location.href = window.location.href;
+                                            }} key={item.id}>
                                                 <li className="header__movie">
                                                     <img className="header__movie-img" src={item.backdropUrl} alt="Постер" />
                                                     <div className="header__movie-content">
@@ -98,8 +103,8 @@ export const Header = ({ isUserAuthorized, userData }: IHeaderProps) => {
                                                         <h3 className="header__movie-title">{item.title}</h3>
                                                     </div>
                                                 </li>
-                                            </Link>
-                                        )
+                                            </button>
+                                        );
                                     })}
                                 </ul>
                             )}

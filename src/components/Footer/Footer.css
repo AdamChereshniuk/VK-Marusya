@@ -13,6 +13,7 @@
 .footer__socials-img {
   width: 36px;
   height: 36px;
+  cursor: pointer;
 }
 
 @media (max-width: 480px) {

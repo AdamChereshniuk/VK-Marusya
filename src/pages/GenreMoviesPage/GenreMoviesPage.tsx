@@ -1,21 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import { queryClient } from "../../queryClient";
 import { useParams } from "react-router-dom";
 import { IMovie } from "../../api/MoviesApi";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import arrow  from "../../assets/GenreFilmsPage/arrow.svg";
 import Api from "../../api/api";
 import "./GenreMoviesPage.css";
 
 export function GenreMoviesPage() {
-    const { data: genreMoviesList } = useQuery({
-        queryFn: () => Api.getFilteredMovies(50, 1, "", String(genreId)),
-        queryKey: ["genreMoviesList"],
-    }, queryClient);
-
+    const [genreMoviesList, setGenreMoviesList] = useState<IMovie[]>([]);
     const [visibleGenreMoviesList, setVisibleGenreMoviesList] = useState<IMovie[]>(genreMoviesList?.slice(0, 10) || []);
-    const [doesHaveMoreMovies] = useState<boolean>(true);
+    const [doesHaveMoreMovies, setDoesHaveMoreMovies] = useState<boolean>(true);
     const { genreId } = useParams();
 
     const handleOnClickMoreBtn = () => {
@@ -25,8 +19,18 @@ export function GenreMoviesPage() {
         ? genreMoviesList.slice(visibleGenreMoviesList.length)
         : genreMoviesList.slice(visibleGenreMoviesList.length, visibleGenreMoviesList.length + 10);
 
+        if(nextVisibleMoviesList.length < 11) setDoesHaveMoreMovies(false);
+
         setVisibleGenreMoviesList([...visibleGenreMoviesList, ...nextVisibleMoviesList]);
     };
+
+    useEffect(() => {
+        const func = async() => {
+            await Api.getFilteredMovies(50, 1, "", String(genreId)).then(data => setGenreMoviesList(data));
+        };
+        func();
+    }, []);
+    useEffect(() => setVisibleGenreMoviesList(genreMoviesList?.slice(0, 10) || []), [genreMoviesList]);
     
     return (
         <section className="genre-movies-section">
@@ -44,11 +48,11 @@ export function GenreMoviesPage() {
                                     <img className="genre-movies__item-img" src={item.posterUrl} alt="Фото нет"/>
                                 </Link>
                             </li>  
-                        )
+                        );
                     })}
                 </ul>
 
-                <button className="genre-movies__more-btn primary__btn" onClick={handleOnClickMoreBtn}>Показать ещё</button>
+                {doesHaveMoreMovies && <button className="genre-movies__more-btn primary__btn" onClick={handleOnClickMoreBtn}>Показать ещё</button>}
             </div>
         </section>
     );
